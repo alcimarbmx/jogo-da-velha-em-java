@@ -5,6 +5,7 @@
  */
 package gameold;
 
+import java.awt.Color;
 import java.awt.Desktop;
 import static java.awt.Desktop.getDesktop;
 import java.io.IOException;
@@ -26,7 +27,7 @@ public class gameOld extends javax.swing.JFrame {
     /**
      * Creates new form gameOld
      */
-    int pont1 = 0, pont2 = 0;
+    int pont1 = 0, pont2 = 0, empate = 0;
     boolean jog1 = true, jog2 = false, auto = false;
     Random r = new Random();
 
@@ -35,95 +36,8 @@ public class gameOld extends javax.swing.JFrame {
         //Matriz m = new Matriz();
         jbpont1.setText("" + pont1);
         jbpont2.setText("" + pont2);
+        jbEmpate.setText("" + empate);
     }
-
-    /*public void automatico(){
-        int j = 1 + r.nextInt(9);
-        
-            switch(j){
-                case 1: 
-                    if(jog2 && btn1.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                case 2:
-                    if(jog2 && btn2.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                case 3:
-                    if(jog2 && btn3.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                case 4:
-                    if(jog2 && btn4.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                case 5:
-                    if(jog2 && btn5.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                case 6:
-                    if(jog2 && btn6.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                case 7:
-                    if(jog2 && btn7.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                case 8:
-                    if(jog2 && btn8.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                case 9:
-                    if(jog2 && btn9.getText().length() < 1) {
-                    btn3.setText("O");
-                    jog1 = true;
-                    jog2 = false;
-                    }else {
-                        j = 1 + r.nextInt(9);
-                    }
-                    break;
-                
-            }
-    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,6 +62,8 @@ public class gameOld extends javax.swing.JFrame {
         jbpont1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jbpont2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jbEmpate = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         novo = new javax.swing.JMenuItem();
@@ -239,6 +155,10 @@ public class gameOld extends javax.swing.JFrame {
 
         jLabel4.setText("Jogador 2:");
 
+        jLabel3.setText("Empate:");
+
+        jbEmpate.setText(" ");
+
         jMenu1.setText("início");
 
         novo.setText("Novo jogo");
@@ -289,6 +209,12 @@ public class gameOld extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,24 +227,22 @@ public class gameOld extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbpont1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jbpont2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(jbEmpate, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbpont1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbpont2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -335,7 +259,11 @@ public class gameOld extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jbpont2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jbpont2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jbEmpate)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,7 +311,7 @@ public class gameOld extends javax.swing.JFrame {
         }
 
     }
-
+//Verifica cada jogada
     public void verifica() {
 
         switch (select()) {
@@ -403,6 +331,7 @@ public class gameOld extends javax.swing.JFrame {
                         && btn5.getText().length() > 0 && btn6.getText().length() > 0
                         && btn7.getText().length() > 0 && btn8.getText().length() > 0
                         && btn9.getText().length() > 0) {
+                    empate++;
                     JOptionPane.showMessageDialog(null, "Empate!");
                     setButton();
                 }
@@ -410,8 +339,9 @@ public class gameOld extends javax.swing.JFrame {
         }
         jbpont1.setText("" + pont1);
         jbpont2.setText("" + pont2);
+        jbEmpate.setText("" + empate);
     }
-
+//Apenas reinicia a jogada:
     public void setButton() {
         btn1.setText("");
         btn2.setText("");
@@ -422,24 +352,38 @@ public class gameOld extends javax.swing.JFrame {
         btn7.setText("");
         btn8.setText("");
         btn9.setText("");
+        
+        btn1.setBackground(Color.LIGHT_GRAY);
+        btn2.setBackground(Color.LIGHT_GRAY);
+        btn3.setBackground(Color.LIGHT_GRAY);
+        btn4.setBackground(Color.LIGHT_GRAY);
+        btn5.setBackground(Color.LIGHT_GRAY);
+        btn6.setBackground(Color.LIGHT_GRAY);
+        btn7.setBackground(Color.LIGHT_GRAY);
+        btn8.setBackground(Color.LIGHT_GRAY);
+        btn9.setBackground(Color.LIGHT_GRAY);
     }
-
+//Zera o jogo todo:
     public void zerar() {
         setButton();
         this.pont1 = 0;
         this.pont2 = 0;
+        this.empate = 0;
         jbpont1.setText("" + pont1);
         jbpont2.setText("" + pont2);
+        jbEmpate.setText("" + empate);
     }
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
         if (jog1 && btn3.getText().length() < 1) {
             btn3.setText("X");
+            btn3.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn3.getText().length() < 1) {
             btn3.setText("O");
+            btn3.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -451,10 +395,12 @@ public class gameOld extends javax.swing.JFrame {
 
         if (jog1 && btn8.getText().length() < 1) {
             btn8.setText("X");
+            btn8.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn8.getText().length() < 1) {
             btn8.setText("O");
+            btn8.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -464,10 +410,12 @@ public class gameOld extends javax.swing.JFrame {
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         if (jog1 && btn1.getText().length() < 1) {
             btn1.setText("X");
+            btn1.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn1.getText().length() < 1) {
             btn1.setText("O");
+            btn1.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -480,10 +428,12 @@ public class gameOld extends javax.swing.JFrame {
         // TODO add your handling code here:     
         if (jog1 && btn2.getText().length() < 1) {
             btn2.setText("X");
+            btn2.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn2.getText().length() < 1) {
             btn2.setText("O");
+            btn2.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -494,10 +444,12 @@ public class gameOld extends javax.swing.JFrame {
         // TODO add your handling code here:  
         if (jog1 && btn4.getText().length() < 1) {
             btn4.setText("X");
+            btn4.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn4.getText().length() < 1) {
             btn4.setText("O");
+            btn4.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -508,10 +460,12 @@ public class gameOld extends javax.swing.JFrame {
         // TODO add your handling code here:    
         if (jog1 && btn5.getText().length() < 1) {
             btn5.setText("X");
+            btn5.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn5.getText().length() < 1) {
             btn5.setText("O");
+            btn5.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -522,10 +476,12 @@ public class gameOld extends javax.swing.JFrame {
         // TODO add your handling code here:   
         if (jog1 && btn6.getText().length() < 1) {
             btn6.setText("X");
+            btn6.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn6.getText().length() < 1) {
             btn6.setText("O");
+            btn6.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -536,10 +492,12 @@ public class gameOld extends javax.swing.JFrame {
         // TODO add your handling code here:   
         if (jog1 && btn7.getText().length() < 1) {
             btn7.setText("X");
+            btn7.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn7.getText().length() < 1) {
             btn7.setText("O");
+            btn7.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -550,10 +508,12 @@ public class gameOld extends javax.swing.JFrame {
         // TODO add your handling code here: 
         if (jog1 && btn9.getText().length() < 1) {
             btn9.setText("X");
+            btn9.setBackground(Color.BLUE);
             jog1 = false;
             jog2 = true;
         } else if (jog2 && btn9.getText().length() < 1) {
             btn9.setText("O");
+            btn9.setBackground(Color.RED);
             jog1 = true;
             jog2 = false;
         }
@@ -636,6 +596,7 @@ public class gameOld extends javax.swing.JFrame {
     private javax.swing.JButton btn9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -643,6 +604,7 @@ public class gameOld extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jbEmpate;
     private javax.swing.JLabel jbpont1;
     private javax.swing.JLabel jbpont2;
     private javax.swing.JMenuItem novo;
