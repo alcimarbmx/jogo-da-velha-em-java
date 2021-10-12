@@ -25,7 +25,7 @@ public class gameOld extends javax.swing.JFrame {
      */
     int pont1 = 0, pont2 = 0, empate = 0;
     boolean jog1 = true, jog2 = false, auto = false;
-    String corDoX = "BLACK";
+    String corDoX = "BLUE";
     String corDoCirculo = "RED";
     //    Random r = new Random();
     // Variables declaration - do not modify//GEN-BEGIN:variables
