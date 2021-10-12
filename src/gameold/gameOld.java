@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 //import sun.awt.DesktopBrowse;
 
 /**
- * @author alcimar
+ * @author Alcimar
  */
 public class gameOld extends javax.swing.JFrame {
 
