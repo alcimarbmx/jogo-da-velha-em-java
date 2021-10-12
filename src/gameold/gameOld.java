@@ -24,7 +24,8 @@ public class gameOld extends javax.swing.JFrame {
      * Creates new form gameOld
      */
     int pont1 = 0, pont2 = 0, empate = 0;
-    boolean jog1 = true, jog2 = false, auto = false;
+    boolean jog1 = true, jog2 = false;
+//    boolean auto = false;
     String corDoX = "BLUE";
     String corDoCirculo = "RED";
     //    Random r = new Random();
